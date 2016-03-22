@@ -5,15 +5,24 @@ export default class SearchBar extends Component {
     super(props);
 
     this.state = { term: '' };
+
+    this.onInputChange = this.onInputChange.bind(this);
   }
 
   onInputChange(event) {
-    console.log(event.target.value);
+    this.setState({ term: event.target.value })
+  }
+
+  onFormSubmit(event) {
+    event.preventDefault();
+    // Here we would need to go and fetch weather data
+    // Call the axios creator!
+
   }
 
   render() {
     return (
-      <form className="input-group">
+      <form onSubmit={this.onFormSubmit} className="input-group">
         <input
           placeholder="Get a 5 day forecast in your favorite cities"
           className="form-control"
